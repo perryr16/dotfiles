@@ -1,4 +1,3 @@
-echo "its working!"
 # tab completion (from turing)
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 # 2nd tab completion (from https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion)
@@ -21,7 +20,7 @@ function parse_git_dirty {
   status=`git status 2>&1 | tee`
   dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
   untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
-  ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+  ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`ki
   newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
   renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
   deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
@@ -70,46 +69,9 @@ parse_git_branch() {
 
 export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
 
+alias bers='bundle exec rspec'
 export PATH="/usr/local/opt/mongodb-community@3.6/bin:$PATH"
 
 #open vs code from terminal
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-# Postgres path
-# export PATH="/Applications/Postgres.app/Contents/Versions/12.3/bin:$PATH"
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-
-
-
-# ========= ALIAS ===========
-alias bers='bundle exec rspec'
-
-# ==== GIT =====
-alias be='bundle exec'
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit -m'
-alias gco='git checkout'
-alias gp='git push origin HEAD'
-
-# ==== db ====
-alias db_reset='rake db:{drop,create,migrate,seed}'
-
-# ==== bash ====
-alias bash_reload='source ~/.bash_profile'
-
-
-
-# reload terminal command
-# $ source ~/.bash_profile
-
-# python 
-alias python="python3"
-alias pip="pip3"
-# Setting PATH for Python 3.9
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
-export PATH
-
-export PATH="$HOME/.poetry/bin:$PATH"
